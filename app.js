@@ -29,7 +29,7 @@ var scripts = [
       link: "http://blcklst.com"
     },
     download_link:"http://mattmoeller.com",
-    concept_images:[]
+    concept_images:[],
     price: 5000
   },
   {
@@ -43,7 +43,7 @@ var scripts = [
       link: "http://blcklst.com"
     },
     download_link:"http://mattmoeller.com",
-    concept_images:[]
+    concept_images:[],
     price: 5000
   }
 ];
