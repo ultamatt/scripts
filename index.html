@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="githubApp">
+<html lang="en" ng-app="scriptApp">
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <title>GitHub Search Go!</title>
+    <title>{{name}}</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.10/angular.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.10/angular-route.js"></script>
@@ -21,36 +21,36 @@
     <link rel="stylesheet" type="text/css" href="app.css">
 </head>
 
-<body layout="column" ng-controller="githubController">
+<body layout="column" ng-controller="scriptController">
     
     <md-toolbar layout="row">
         <div class="md-toolbar-tools">
-            <md-input-container>
+            <!-- <md-input-container>
               <input type="text" ng-model="searchQuery">
             </md-input-container>
             <md-button class="md-raised md-primary" ng-click="callRestService()">
                 Search
-            </md-button>
+            </md-button> -->
         </div>
     </md-toolbar>
     <md-content style="height: 600px;">
         <md-list>
-          <md-list-item class="md-3-line" ng-repeat="(key, value) in repos | groupBy: 'owner'">
-            <md-subheader class="md-raised md-primary">{{key}}</md-subheader>
-            <md-card ng-repeat="repo in value">
+          <md-list-item class="md-3-line" ng-repeat="script in scripts | groupBy: 'name'">
+            <md-subheader class="md-raised md-primary">{{script.name}}</md-subheader>
+            <md-card>
                 <md-card-content>
-                <h2 class="md-title">
-                    <a href="{{repo.url}}">Repo: {{repo.name}}</a>
-                </h2>
-                    <h3 ng-if="repo.description != ''">
-                        Description: {{repo.description}}
+                    <h2 class="md-title">
+                        <a href="{{script.download_link}}">{{script.name}}</a>
+                    </h2>
+                    <h3 ng-if="script.description != ''">
+                        Description: {{script.description}}
                     </h3>
-                    <h4 ng-if="repo.homepage != '' && repo.homepage != ' '">
+                   <!--  <h4 ng-if="script.review is not null">
                         <a href="{{repo.homepage}}">Homepage: {{repo.homepage}}</a>
                     </h4>
                     <p>Language: {{repo.language}}</p>
                     <p>Forks: {{repo.forks}}</p>
-                    <p>Open Issues: {{repo.open_issues}}</p>
+                    <p>Open Issues: {{repo.open_issues}}</p> -->
                 </md-card-content>
             </md-card>
             <md-divider md-inset ></md-divider>

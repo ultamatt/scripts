@@ -1,43 +1,56 @@
 /*
+  Scripts Application 
 
-  X = Done
-  M = Mostly
+  A simple application to list my scripts for people on the internet to see them 
 
-  X -The app allows one to search GitHub.com for repos by keyword. 
-  X -The app caches the results to prevent triggering duplicate network requests. 
-  X -The results should show as a list, 
-  X   -grouped by "owner" under Angular Material Design "SubHeadings". 
-  X -As demo'd in the Angular Material Design SubHeader Demo, 
-      the Owner's name should stick to the top of the scrollable area as 
-      the user scrolls through the list of repos. 
-  X -Each matching repo should be contained inside a Material Design Card. 
-  X -Cards should contain the following information on separate rows:
-  X   -Repo Name (in bold, linked to the repo)
-  X   -Description. If not available, this row is hidden
-  M   -Home page. If not available, this row is hidden
-  X   -Language
-  X   -Forks
-  X   -Open Issues
-
-  - * - * - * - * - * - * - * - * - * - *
-  Okay. This is done but it is SUPER gross code. I haven't used any slick animations and
-    borked in a library to make my life easier for grouping. I'm not proud of this work, 
-    but seeing as how I had maybe 2 hours to do it. It'll pass for tonight. 
-
-    5/26/2015 - M@
-  - * - * - * - * - * - * - * - * - * - *
+  - User Should be able to see details about a script
+    - Logline
+    - Description
+    - A Review if there is one. 
+    - Download link for the script. 
+    - concept images. 
+  - User should be able to write a review about the script.
+  - There should be a button at the top to get my contact information 
+    - Contact has my picture
+    - my email
+    - my phone number
+  - there should be a pop out panel on the left to filter scripts. 
 */
 
-var githubApp = angular.module('githubApp', ['ngMaterial', 'angular.filter']);
-
-githubApp.controller('githubController', function ($scope, $http) {
-  $scope.searchQuery = "search here!";
-  $scope.callRestService= function() {
-    var searchURL = 'http://api.github.com/legacy/repos/search/' + this.searchQuery;
-    $http({method: 'GET', url: searchURL, cache:true}).
-      success(function(data, status, headers, config) {
-           $scope.repos = data.repositories;
-      })
+var scripts = [
+  {
+    name:"Dignity; Trust", 
+    logline:"foo, bar", 
+    description:"lkajsdlfkjasdf", 
+    review:{
+      score: 7, 
+      positives: "Good Stuff", 
+      negatives: "Bad Stuff", 
+      link: "http://blcklst.com"
+    },
+    download_link:"http://mattmoeller.com",
+    concept_images:[]
+    price: 5000
+  },
+  {
+    name:"Locke and Lowde", 
+    logline:"foo, bar", 
+    description:"lkajsdlfkjasdf", 
+    review:{
+      score: 7, 
+      positives: "Good Stuff", 
+      negatives: "Bad Stuff", 
+      link: "http://blcklst.com"
+    },
+    download_link:"http://mattmoeller.com",
+    concept_images:[]
+    price: 5000
   }
+];
+var scriptApp = angular.module('scriptApp', ['ngMaterial', 'angular.filter']);
+scriptApp.name = "Matt Moeller's Scripts";
 
+scriptApp.controller('scriptController', function ($scope, $http) {
+  $scripts = scripts;
 });
+
